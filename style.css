@@ -1,15 +1,1 @@
-@keyframes colorChange {
-  0% { color: red; }
-  25% { color: blue; }
-  50% { color: green; }
-  75% { color: orange; }
-  100% { color: red; }
-}
 
-h1 {
-  animation: colorChange 4s infinite;
-}
-
-p {
-  animation: colorChange 4s infinite;
-}
