@@ -1,0 +1,7 @@
+.position {
+  display: flex;
+  justify-content: center; /* posisi horizontal */
+  align-items: center;     /* posisi vertikal */
+  height: 200px;
+  border: 1px solid #000;
+}
