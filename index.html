@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Web Tittle</title>
   <style>
+    
+    html {
+  scroll-behavior: smooth;
+    }
+    
     body {
       margin: 0;
       background-color: black;
@@ -114,7 +119,7 @@
   </div>
 
   <div class="nav-menu" id="navMenu">
-    <a href="#" onclick="scrollToTop()">about me</a>
+    <a href="#" onclick="scrollToTop(); return false;">about me</a>
     <a href="https://github.com/MehogaYT/TheNoting">my project</a>
     <a href="#" onclick="scrollToBottom()">contact</a>
   </div>
