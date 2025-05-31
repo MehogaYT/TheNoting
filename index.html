@@ -116,7 +116,7 @@
   <div class="nav-menu" id="navMenu">
     <a href="#" onclick="location.reload()">about me</a>
     <a href="https://github.com/MehogaYT/TheNoting">my project</a>
-    <a href="#">contact</a>
+    <a href="#" onclick="scrollToBottom()">contact</a>
   </div>
 
   <div class="content">
@@ -153,6 +153,9 @@ The game retains the same core gameplay as the PC/console version: 100 players a
 PUBG Mobile quickly became one of the most downloaded and highest-grossing mobile games worldwide. Its popularity soared in regions like India, Southeast Asia, the Middle East, and Latin America.
 To improve graphics and gameplay, PUBG Mobile Lite was introduced for lower-end devices, and PUBG: New State was later launched with futuristic elements.
    </p>
+    <br>
+    <h9>contact</h9>
+    <p>Anyting And Everything</p>
   </div>
   
   <script>
@@ -160,6 +163,13 @@ To improve graphics and gameplay, PUBG Mobile Lite was introduced for lower-end 
       const menu = document.getElementById("navMenu");
       menu.style.display = menu.style.display === "block" ? "none" : "block";
     }
+
+  function scrollToBottom() {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'smooth'
+    });
+  }
 
     document.addEventListener("click", function(event) {
       const menu = document.getElementById("navMenu");
