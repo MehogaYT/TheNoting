@@ -136,15 +136,6 @@ Let me know if you want this in a longer version, or translated into Indonesian 
       const menu = document.getElementById("navMenu");
       menu.style.display = menu.style.display === "block" ? "none" : "block";
     }
-
-    // Tutup menu saat klik di luar
-    document.addEventListener('click', function(event) {
-      const menu = document.getElementById("navMenu");
-      const hamburger = document.querySelector('.hamburger');
-      if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
-        menu.style.display = 'none';
-      }
-    });
   </script>
 </body>
 </html>
