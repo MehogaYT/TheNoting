@@ -1,75 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Web Title</title>
-  <style>
-    body {
-      background: black;
-      color: white;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    .top-line {
-      width: 100%;
-      height: 60px;
-      background-color: white;
-      display: flex;
-      align-items: center;
-      padding: 0 15px;
-      box-sizing: border-box;
-      position: relative;
-      z-index: 1;
-    }
-
-    .round-image {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-right: 10px;
-    }
-
-    .profile-info {
-      display: flex;
-      flex-direction: column;
-      color: black;
-    }
-
-    .main-container {
-      padding: 80px 25px 20px 25px;
-      max-width: 800px;
-    }
-
-    h1 {
-      color: cyan;
-      margin-top: 0;
-    }
-
-    p {
-      color: red;
-    }
-
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Web Tittle</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      background-color: white;
+      color: black;
+    }
+    .header img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+    }
+    .info {
+      line-height: 1.5;
+    }
+    .content {
+      padding: 20px;
+    }
+    h1 {
+      color: cyan;
+    }
+    p {
+      color: red;
+    }
+  </style>
 </head>
 <body>
+  <div class="header">
+    <img src="kazama.jpeg" alt="Logo">
+    <div class="info">
+      <div>ClassName</div>
+      <div>ClassAge</div>
+      <div>ClassLocation</div>
+    </div>
+  </div>
 
-  <!-- Top Bar with Profile -->
-  <div class="top-line">
-    <img src="Kazama.jpeg" alt="Profile" class="round-image">
-    <div class="profile-info">
-      <span>ClassName</span>
-      <span>ClassAge</span>
-      <span>ClassLocation</span>
-    </div>
-  </div>
-
-  <!-- Main Content -->
-  <div class="main-container">
-    <h1>Lorem ipsum</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-  </div>
+  <div class="content">
+    <h1>Lorem ipsum</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+      exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
+      irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+      pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+      deserunt mollit anim id est laborum.
+    </p>
+  </div>
 </body>
 </html>
