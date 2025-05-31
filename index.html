@@ -37,6 +37,17 @@
       color: red;
     }
 
+    .round-image {
+      position: absolute;
+      top: 10px;    
+      left: 3px;  
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+    
     .content2 {
       position: absolute;
       top: -10px;
@@ -48,25 +59,25 @@
       color: black;
     }
 
-    .round-image {
-      position: absolute;
-      top: 5px;    
-      left: 5px;  
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-    }
-
     .content2_1 {
       position: absolute;
-      top: 5px;
+      top: 10px;
       left: 50px;
       max-width: 600px;
     }
 
     .class-name2 {
+      color: black;
+    }
+
+    .content2_2 {
+      position: absolute;
+      top: 20px;
+      left: 50px;
+      max-width: 600px;
+    }
+
+    .class-name3 {
       color: black;
     }
     
@@ -83,11 +94,15 @@
       Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
   </div>
+  <img src="Kazama.jpeg" alt="Round image" class="round-image">
   <div class="content2">
     <p class="class-name">ClassName</p>
   </div>
-  <img src="Kazama.jpeg" alt="Round image" class="round-image">
   <div class="content2_1">
     <p class="class-name2">ClassAge</p>
+  </div>
+    <div class="content2_2">
+    <p class="class-name2">ClassLocation</p>
+  </div>
 </body>
 </html>
