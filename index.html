@@ -14,9 +14,14 @@
     .header {
       display: flex;
       align-items: center;
+      justify-content: space-between; /* added for spacing */
       padding: 5px;
       background-color: white;
       color: black;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
     }
     .header img {
       width: 40px;
@@ -26,6 +31,40 @@
     }
     .info {
       line-height: 1.3;
+    }
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 25px;
+      height: 18px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      display: block;
+      height: 3px;
+      background: black;
+      border-radius: 2px;
+    }
+    .nav-menu {
+      display: none;
+      position: absolute;
+      top: 50px;
+      right: 10px;
+      background-color: white;
+      color: black;
+      padding: 10px;
+      border-radius: 6px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+    .nav-menu a {
+      text-decoration: none;
+      color: black;
+      display: block;
+      padding: 5px 0;
+    }
+    .nav-menu a:hover {
+      color: blue;
     }
     .content {
       padding: 20px;
@@ -40,12 +79,25 @@
 </head>
 <body>
   <div class="header">
-    <img src="Kazama.jpeg" alt="Idk I Am Just Put This Randomly">
-    <div class="info">
-      <div>ClassName</div>
-      <div>ClassAge</div>
-      <div>ClassLocation</div>
+    <div class="header-left">
+      <img src="Kazama.jpeg" alt="Idk I Am Just Put This Randomly">
+      <div class="info">
+        <div>ClassName</div>
+        <div>ClassAge</div>
+        <div>ClassLocation</div>
+      </div>
     </div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div class="nav-menu" id="navMenu">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
   </div>
 
   <div class="content">
@@ -59,5 +111,12 @@
       deserunt mollit anim id est laborum.
     </p>
   </div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("navMenu");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+  </script>
 </body>
 </html>
