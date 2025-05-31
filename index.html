@@ -114,7 +114,7 @@
   </div>
 
   <div class="nav-menu" id="navMenu">
-    <a href="#" onclick="location.reload()">about me</a>
+    <a href="#" onclick="scrollToTop()">about me</a>
     <a href="https://github.com/MehogaYT/TheNoting">my project</a>
     <a href="#" onclick="scrollToBottom()">contact</a>
   </div>
@@ -163,6 +163,13 @@ To improve graphics and gameplay, PUBG Mobile Lite was introduced for lower-end 
       const menu = document.getElementById("navMenu");
       menu.style.display = menu.style.display === "block" ? "none" : "block";
     }
+
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
 
   function scrollToBottom() {
     window.scrollTo({
