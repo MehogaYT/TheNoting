@@ -27,7 +27,7 @@
     .menu-btn {
       position: absolute;
       top: 15px;
-      left: 15px;
+      left: 10px;
       cursor: pointer;
       z-index: 1001;
     }
@@ -52,7 +52,7 @@
     }
 
     .side-menu.open {
-      left: 0;
+      right: 0;
     }
 
     .side-menu ul {
@@ -174,13 +174,6 @@
       document.getElementById("sideMenu").classList.remove("open");
       document.getElementById("overlay").classList.remove("show");
     }
-
-    // Optional: ESC key to close menu
-    document.addEventListener('keydown', function(event) {
-      if (event.key === "Escape") {
-        closeMenu();
-      }
-    });
   </script>
 </body>
 </html>
