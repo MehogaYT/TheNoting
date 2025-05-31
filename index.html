@@ -10,88 +10,67 @@
       color: white;
       font-family: Arial, sans-serif;
       margin: 0;
-      height: 100vh;
-      position: relative;
+      padding: 0;
     }
+
     .top-line {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 60px;
       background-color: white;
-    }
-      
-    .content {
-      position: absolute;
-      top: 80px;
-      left: 25px;
-      max-width: 600px;
-    }
-    h1 {
-      color: cyan;
-    }
-    p {
-      color: red;
+      display: flex;
+      align-items: center;
+      padding: 0 15px;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 1;
     }
 
     .round-image {
-      position: absolute;
-      top: 5px;
-      left: 3px;
       width: 45px;
       height: 45px;
       border-radius: 50%;
       object-fit: cover;
-      display: block;
+      margin-right: 10px;
     }
 
-    .content2 {
-      position: absolute;
-      top: -10px;
-      left: 55px;
-      max-width: 600px;
-    }
-
-    .content2_1 {
-      position: absolute;
-      top: 5px;
-      left: 50px;
-      max-width: 600px;
-        }
-     .content2_2 {
-      position: absolute;
-      top: 20px;
-      left: 50px;
-      max-width: 600px;
-      }
-
-    .class-name, .class-name2, .class-name3 {
+    .profile-info {
+      display: flex;
+      flex-direction: column;
       color: black;
     }
-        
+
+    .main-container {
+      padding: 80px 25px 20px 25px;
+      max-width: 800px;
+    }
+
+    h1 {
+      color: cyan;
+      margin-top: 0;
+    }
+
+    p {
+      color: red;
+    }
+
   </style>
 </head>
 <body>
-  <!-- Top Bar -->
-  <div class="top-line"></div>
+
+  <!-- Top Bar with Profile -->
+  <div class="top-line">
+    <img src="Kazama.jpeg" alt="Profile" class="round-image">
+    <div class="profile-info">
+      <span>ClassName</span>
+      <span>ClassAge</span>
+      <span>ClassLocation</span>
+    </div>
+  </div>
 
   <!-- Main Content -->
-  <div class="content">
+  <div class="main-container">
     <h1>Lorem ipsum</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-  </div>
-
-  <!-- Profile Info -->
-  <img src="Kazama.jpeg" alt="Round image" class="round-image">
-  <div class="content2">
-    <p class="class-name">ClassName</p>
-  </div>
-  <div class="content2_1">
-    <p class="class-name2">ClassAge</p>
-  </div>
-  <div class="content2_2">
-    <p class="class-name2">ClassLocation</p>
   </div>
 </body>
 </html>
