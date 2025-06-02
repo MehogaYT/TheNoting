@@ -1,0 +1,12 @@
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  scrollbar-width: none;
+}
+
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+  overflow-y: scroll;
+}
