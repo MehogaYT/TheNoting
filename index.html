@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Web Tittle</title>
   <style>
     html {
-  scroll-behavior: smooth;
+      scroll-behavior: smooth;
     }
-    
+
     body {
-      margin: 0;
-      background-color: white;
-      color: black;
-      font-family: 'Work Sans', sans-serif;
+      margin: 0;
+      background-color: white;
+      color: black;
+      font-family: 'Work Sans', sans-serif;
     }
 
     .header {
@@ -24,12 +24,12 @@
       align-items: center;
       justify-content: space-between;
       padding: 5px;
-      background-color: white; /* tema  */
+      background-color: white;
       color: black;
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%; 
+      width: 100%;
       z-index: 1000;
     }
 
@@ -41,12 +41,13 @@
     .header img {
       width: 40px;
       height: 40px;
-      border-radius: 50%;
-      margin-right: 10px;
+      border-radius: 45%;
+      margin-right: 13px;
     }
 
     .info {
       line-height: 1.3;
+      color: #5d1310;
     }
 
     .hamburger {
@@ -70,7 +71,7 @@
       position: fixed;
       top: 50px;
       right: 30px;
-      background-color: black; /* tema terang */
+      background-color: black;
       color: white;
       padding: 10px;
       border-radius: 6px;
@@ -88,11 +89,15 @@
 
     .nav-menu a:hover {
       color: gray;
-   }
+    }
 
     .content {
-      padding: 20px;
+      padding: 10px;
       padding-top: 50px;
+      text-align: center;
+      margin-left: -50px;
+      margin-top: 30px;
+      transform: translate(50px, 30px);
     }
 
     h1, h2, h3, h9 {
@@ -100,7 +105,25 @@
     }
 
     p {
-      color: black;
+      c#274a5d274a5d;
+    }
+
+    .disabled {
+      pointer-events: none;
+    }
+
+    #popupWarning {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #f44336;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      display: none;
+      z-index: 2000;
+      font-size: 14px;
     }
   </style>
 </head>
@@ -122,10 +145,12 @@
   </div>
 
   <div class="nav-menu" id="navMenu">
-    <a href="#" onclick="scrollToTop(); return false;">about me</a>
+    <a href="#" onclick="handleScroll('top', this); return false;">about me</a>
     <a href="https://github.com/MehogaYT/TheNoting">my project</a>
-    <a href="#" onclick="scrollToBottom()">contact</a>
+    <a href="#" onclick="handleScroll('bottom', this); return false;">contact</a>
   </div>
+
+  <div id="popupWarning">tunggu 1 detik, jagan nyepam woyid=""</div>
 
   <div class="content">
     <h1>latar belakang</h1>
@@ -136,34 +161,50 @@
     <p>
       Undefinded
     </p>
-   <h3>tentang saya</h3>
-   <p>
-     under age restriction
-   </p>
-    <br>
+    <h3>tentang saya</h3>
+    <p>
+      under age restriction
+    </p>
     <h9>kontak</h9>
     <p>Undefinded</p>
   </div>
-  
+
   <script>
     function toggleMenu() {
       const menu = document.getElementById("navMenu");
       menu.style.display = menu.style.display === "block" ? "none" : "block";
     }
 
-  function scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }
+    let isCooldown = false;
 
-  function scrollToBottom() {
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      behavior: 'smooth'
-    });
-  }
+    function handleScroll(direction, btn) {
+      if (isCooldown) {
+        showPopup();
+        return;
+      }
+
+      isCooldown = true;
+      btn.classList.add("disabled");
+
+      if (direction === 'top') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (direction === 'bottom') {
+        window.scrollTo({ top: 100000, behavior: 'smooth' });
+      }
+
+      setTimeout(() => {
+        isCooldown = false;
+        btn.classList.remove("disabled");
+      }, 1000);
+    }
+
+    function showPopup() {
+      const popup = document.getElementById("popupWarning");
+      popup.style.display = "block";
+      setTimeout(() => {
+        popup.style.display = "none";
+      }, 1000);
+    }
 
     document.addEventListener("click", function(event) {
       const menu = document.getElementById("navMenu");
