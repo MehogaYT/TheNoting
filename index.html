@@ -1,214 +1,696 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web Tittle</title>
+  <meta charset="UTF-8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammad Razzak - Portfolio</title>
   <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 80px;
     }
 
     body {
-      margin: 0;
-      background-color: white;
-      color: black;
-      font-family: 'Work Sans', sans-serif;
+      background-color: #0a0a0a;
+      color: #ffffff;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
     }
 
+    /* Header */
     .header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 5px;
-      background-color: white;
-      color: black;
+      padding: 15px 40px;
+      background: rgba(15, 15, 15, 0.95);
+      backdrop-filter: blur(10px);
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       z-index: 1000;
+      border-bottom: 1px solid rgba(0, 255, 255, 0.1);
     }
 
     .header-left {
       display: flex;
       align-items: center;
+      gap: 20px;
     }
 
     .header img {
-      width: 40px;
-      height: 40px;
-      border-radius: 45%;
-      margin-right: 13px;
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 2px solid #00ffff;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .header img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
     }
 
     .info {
-      line-height: 1.3;
-      color: #5d1310;
+      color: #00ffff;
+      font-weight: 600;
     }
 
+    .info div {
+      margin: 2px 0;
+      font-size: 0.9rem;
+    }
+
+    /* Hamburger */
     .hamburger {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      position: relative;
       width: 30px;
-      height: 18px;
+      height: 20px;
       cursor: pointer;
+      z-index: 1001;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .hamburger span {
-      display: block;
+      position: absolute;
+      width: 100%;
       height: 3px;
-      background: black;
+      background: #00ffff;
       border-radius: 2px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      left: 0;
     }
 
+    .hamburger span:nth-child(1) {
+      top: 0;
+    }
+
+    .hamburger span:nth-child(2) {
+      bottom: 0;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      bottom: 50%;
+      transform: translateY(50%) rotate(-45deg);
+    }
+
+    /* Navigation Menu */
     .nav-menu {
-      display: none;
       position: fixed;
-      top: 50px;
-      right: 30px;
-      background-color: black;
-      color: white;
-      padding: 10px;
-      border-radius: 6px;
-      box-shadow: 0 0 5px rgba(0, 191, 255, 0.6);
-      border: 2px solid cyan;
-      z-index: 1001;
-    }
-
-    .nav-menu a {
-      text-decoration: none;
-      color: white;
-      display: block;
-      padding: 10px 0;
-    }
-
-    .nav-menu a:hover {
-      color: gray;
-    }
-
-    .content {
-  padding: 80px 20px 20px 20px; 
-  text-align: center;
-}
-
-    h1, h2, h3, h9 {
-      color: #4682B4;
-    }
-
-    p {
-      c#274a5d274a5d;
-    }
-
-    .disabled {
+      top: 80px;
+      right: 40px;
+      background: rgba(20, 20, 20, 0.95);
+      backdrop-filter: blur(15px);
+      padding: 20px;
+      border-radius: 15px;
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      z-index: 999;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: all 0.3s ease;
       pointer-events: none;
     }
 
+    .nav-menu.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+
+    .nav-menu a {
+      display: block;
+      color: #00ffff;
+      text-decoration: none;
+      padding: 12px 20px;
+      margin: 5px 0;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .nav-menu a:hover {
+      background: rgba(0, 255, 255, 0.1);
+      transform: translateX(5px);
+    }
+
+    /* Main Content */
+    .content {
+      padding-top: 100px;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, rgba(10, 10, 10, 0.9), rgba(20, 20, 30, 0.9));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%);
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.6; }
+    }
+
+    .hero-content {
+      max-width: 800px;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, #00ffff, #00b3b3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: slideUp 1s ease-out;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      color: #cccccc;
+      margin-bottom: 30px;
+      animation: slideUp 1s ease-out 0.2s both;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      animation: slideUp 1s ease-out 0.4s both;
+    }
+
+    .btn {
+      padding: 15px 30px;
+      border: 2px solid #00ffff;
+      border-radius: 50px;
+      background: transparent;
+      color: #00ffff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn:hover {
+      background: rgba(0, 255, 255, 0.1);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 255, 255, 0.2);
+    }
+
+    .btn-primary {
+      background: linear-gradient(45deg, #00ffff, #00b3b3);
+      color: #0a0a0a;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(45deg, #00b3b3, #00ffff);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 255, 255, 0.3);
+    }
+
+    /* Sections */
+    .section {
+      padding: 100px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 60px;
+      color: #00ffff;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(45deg, #00ffff, #00b3b3);
+    }
+
+    /* About Section */
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-text {
+      font-size: 1.1rem;
+      color: #cccccc;
+      line-height: 1.8;
+    }
+
+    .about-image {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .about-image:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .skill-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      border-color: #00ffff;
+      box-shadow: 0 10px 30px rgba(0, 255, 255, 0.1);
+    }
+
+    .skill-card h3 {
+      color: #00ffff;
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+
+    .skill-card p {
+      color: #cccccc;
+      font-size: 1rem;
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: #00ffff;
+      box-shadow: 0 15px 40px rgba(0, 255, 255, 0.1);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(45deg, #00ffff, #00b3b3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0a0a0a;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .project-content {
+      padding: 25px;
+    }
+
+    .project-content h3 {
+      color: #00ffff;
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+
+    .project-content p {
+      color: #cccccc;
+      margin-bottom: 20px;
+    }
+
+    /* Contact Section */
+    .contact-content {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-info {
+      margin-top: 40px;
+    }
+
+    .contact-item {
+      margin: 20px 0;
+      font-size: 1.1rem;
+      color: #cccccc;
+    }
+
+    .contact-item strong {
+      color: #00ffff;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 80px;
+    }
+
+    .footer p {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    /* Animations */
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header {
+        padding: 12px 20px;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .section {
+        padding: 60px 20px;
+      }
+
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 200px;
+        text-align: center;
+      }
+    }
+
+    /* Popup Warning */
     #popupWarning {
       position: fixed;
-      bottom: 20px;
+      bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
       background-color: #f44336;
       color: white;
-      padding: 10px 20px;
-      border-radius: 10px;
+      padding: 14px 28px;
+      border-radius: 12px;
       display: none;
       z-index: 2000;
-      font-size: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      box-shadow: 0 0 15px #f44336cc;
+      animation: fadeInOut 1.2s ease forwards;
+    }
+
+    @keyframes fadeInOut {
+      0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+      }
+      10%,
+      90% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+      }
     }
   </style>
 </head>
 <body>
   <div class="header">
     <div class="header-left">
-      <img src="Kazama.jpeg" alt="Idk I Am Just Put This Randomly">
+      <img src="Kazama.jpeg" alt="Profile Picture" />
       <div class="info">
         <div>Muhammad Razzak Ramadhan</div>
-        <div>15</div>
-        <div>Undefinded</div>
+        <div>15 • Script Kiddie</div>
       </div>
     </div>
-    <div class="hamburger" onclick="toggleMenu()">
-      <span></span>
+    <div class="hamburger" id="hamburger" aria-label="Toggle menu">
       <span></span>
       <span></span>
     </div>
   </div>
 
-  <div class="nav-menu" id="navMenu">
-    <a href="#" onclick="handleScroll('top', this); return false;">about me</a>
-    <a href="https://github.com/MehogaYT/TheNoting">my project</a>
-    <a href="#" onclick="handleScroll('bottom', this); return false;">contact</a>
-  </div>
+  <nav class="nav-menu" id="navMenu">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-  <div id="popupWarning">tunggu 1 detik, jagan nyepam woy</div>
+  <div id="popupWarning">Tunggu 1 detik, jangan nyepam woy</div>
 
-  <div class="content">
-    <h1>latar belakang</h1>
-    <p>
-      under age restriction
-    </p>
-    <h2>keahlian/profesi</h2>
-    <p>
-      Undefinded
-    </p>
-    <h3>tentang saya</h3>
-    <p>
-      under age restriction
-    </p>
-    <h9>kontak</h9>
-    <p>Undefinded</p>
-  </div>
+  <main class="content">
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>Full Made By AI :(</h1>
+        <p>I Am Piece Of Useless, No Skill No Frends</p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">Gak Ada portofolio</a>
+          <a href="#contact" class="btn">Lonely</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>I Am Useless I Am Dump I Am Lazy Not To Do Even I Am Not Worh Of An Money</p>
+          </div>
+        <div class="about-image">
+          <img src="Kazama.jpeg" alt="Muhammad Razzak Ramadhan - Crazy People" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+      <h2 class="section-title">My Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card animate-on-scroll">
+          <h3>Pure AI</h3>
+          <p>Pure Useless</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+      <h2 class="section-title">My Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card animate-on-scroll">
+          <img src="Kazama.jpeg" alt="Project Preview" />
+          <div class="project-content">
+            <h3>TheNoting </h3>
+            <p>Everything Is Ai🥀</p></p>
+            <a href="https://github.com/MehogaYT/TheNoting" class="btn" target="_blank">View Project</a>
+          </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-content">
+        <p>I'm always an looser they call me Big L</p>
+            <div class="contact-item">
+            <strong>GitHub:</strong> <a href="https://github.com/MehogaYT" style="color: #00ffff; text-decoration: none;">MehogaYT</a>
+          </div>
+          <div class="contact-item">
+            <strong>Location:</strong> Undefined
+          </div>
+        </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2010-2025 Muhammad Razzak Ramadhan. Go Die </p>
+  </footer>
 
   <script>
+    // Navigation
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+
     function toggleMenu() {
-      const menu = document.getElementById("navMenu");
-      menu.style.display = menu.style.display === "block" ? "none" : "block";
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('show');
     }
 
-    let isCooldown = false;
+    hamburger.addEventListener('click', toggleMenu);
 
-    function handleScroll(direction, btn) {
-      if (isCooldown) {
-        showPopup();
-        return;
+    // Close menu when clicking on nav links
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('show');
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (event) => {
+      if (!navMenu.contains(event.target) && !hamburger.contains(event.target)) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('show');
       }
+    });
 
-      isCooldown = true;
-      btn.classList.add("disabled");
+    // Scroll animations
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
 
-      if (direction === 'top') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (direction === 'bottom') {
-        window.scrollTo({ top: 100000, behavior: 'smooth' });
-      }
-
-      setTimeout(() => {
-        isCooldown = false;
-        btn.classList.remove("disabled");
-      }, 1000);
+    function checkVisibility() {
+      animatedElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight - 100;
+        if (isVisible) {
+          el.classList.add('visible');
+        }
+      });
     }
 
-    function showPopup() {
-      const popup = document.getElementById("popupWarning");
-      popup.style.display = "block";
-      setTimeout(() => {
-        popup.style.display = "none";
-      }, 1000);
-    }
+    window.addEventListener('scroll', checkVisibility);
+    window.addEventListener('load', checkVisibility);
 
-    document.addEventListener("click", function(event) {
-      const menu = document.getElementById("navMenu");
-      const hamburger = document.querySelector(".hamburger");
-
-      if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
-        menu.style.display = "none";
-      }
+    // Smooth scrolling for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
     });
   </script>
 </body>
